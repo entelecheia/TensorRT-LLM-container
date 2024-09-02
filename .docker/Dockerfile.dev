@@ -10,7 +10,8 @@ LABEL org.opencontainers.image.licenses="MIT"
 ARG DEBIAN_FRONTEND=noninteractive
 # Updates the image and installs necessary packages
 RUN apt-get update --fix-missing \
-    && apt-get install -y curl wget jq sudo gosu git build-essential software-properties-common \
+    && apt-get install -y curl wget jq sudo gosu build-essential software-properties-common \
+    python3.10 python3-pip openmpi-bin libopenmpi-dev git git-lfs \
     locales locales-all fontconfig fonts-nanum \
     tzdata openssh-server \
     # Cleans up unnecessary packages to reduce image size
@@ -74,6 +75,18 @@ RUN if id -u $USERNAME >/dev/null 2>&1; then \
         chmod 0440 /etc/sudoers.d/$USERNAME; \
     fi
 
+# Install the latest preview version (corresponding to the main branch) of TensorRT-LLM.
+# If you want to install the stable version (corresponding to the release branch), please
+# remove the `--pre` option.
+RUN pip3 install tensorrt_llm -U --pre --extra-index-url https://pypi.nvidia.com
+
+# Check installation
+RUN python3 -c "import tensorrt_llm"
+
+# Install the requirements for running the example.
+RUN git clone https://github.com/NVIDIA/TensorRT-LLM.git
+RUN pip install -r TensorRT-LLM/examples/bloom/requirements.txt
+RUN cd TensorRT-LLM && git lfs install
 
 USER root
 
