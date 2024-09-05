@@ -171,6 +171,9 @@ HOST_CACHE_DIR="${HOST_CACHE_DIR:-}"
 HOST_HF_HOME="${HOST_HF_HOME:-}"
 [ -n "${HOST_HF_HOME}" ] && [ ! -d "${HOST_HF_HOME}" ] && mkdir -p "${HOST_HF_HOME}"
 
+# prepare git submodules
+git submodule update --init --recursive
+
 # run docker-compose
 if [ "${COMMAND}" == "push" ]; then
     CMD="docker push ${CONTAINER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
