@@ -32,10 +32,14 @@ jobs:
       - name: Secure disk space for the build
         run: bash .github/scripts/free-disk-space.sh
 
-      - name: Version from version file
-        uses: c-py/action-dotenv-to-setenv@v5
-        with:
-          env-file: ./.docker/docker.version
+      - name: Update submodules
+        run: git submodule update --init --recursive
+
+      - name: Version from TensorRT-LLM
+        run: |
+          echo "TRT_GIT_COMMIT=$(cd src/TensorRT-LLM && git rev-parse HEAD)" >> $GITHUB_ENV
+          TRT_LLM_VERSION=$(grep '^__version__' src/TensorRT-LLM/tensorrt_llm/version.py | grep -o '=.*' | tr -d '= "')
+          echo "TRT_LLM_VERSION=$TRT_LLM_VERSION" >> $GITHUB_ENV
 
       - name: Common environment Variables from Dotenv
         uses: c-py/action-dotenv-to-setenv@v5
