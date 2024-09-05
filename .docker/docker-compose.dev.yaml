@@ -16,6 +16,15 @@ services:
         ARG_APP_INSTALL_ROOT: $APP_INSTALL_ROOT
         ARG_APP_DIRNAME: $APP_DIRNAME
         ARG_CONTAINER_SERVICE_NAME: $CONTAINER_SERVICE_NAME
+        TRT_VER: "10.3.0.26"
+        CUDA_VER: "12.5"
+        CUDNN_VER: "9.2.1.18-1"
+        NCCL_VER: "2.22.3-1+cuda12.5"
+        CUBLAS_VER: "12.5.3.2-1"
+        NVRTC_VER: "12.5.82-1"
+        TORCH_INSTALL_TYPE: "skip"
+        TRT_GIT_COMMIT: $TRT_GIT_COMMIT
+        TRT_LLM_VERSION: $TRT_LLM_VERSION
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
