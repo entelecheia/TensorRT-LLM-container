@@ -1,5 +1,5 @@
 # Sets the base image for subsequent instructions
-FROM nvcr.io/nvidia/pytorch:24.07-py3 AS base
+FROM nvcr.io/nvidia/pytorch:24.08-py3 AS base
 
 # Sets labels for the image
 LABEL org.opencontainers.image.source="https://github.com/entelecheia/TensorRT-LLM-container"
