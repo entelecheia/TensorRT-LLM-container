@@ -1,0 +1,3 @@
+[submodule "src/TensorRT-LLM"]
+	path = src/TensorRT-LLM
+	url = https://github.com/NVIDIA/TensorRT-LLM.git
