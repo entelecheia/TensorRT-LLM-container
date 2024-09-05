@@ -127,3 +127,8 @@ docker-up-detach: ## launch the docker app image in detached mode
 	@IMAGE_VARIANT=$${IMAGE_VARIANT:-"dev"} \
 	DOCKER_PROJECT_ID=$${DOCKER_PROJECT_ID:-"default"} \
 	bash .docker/.docker-scripts/docker-compose.sh up --detach
+
+##@ Release
+
+update-version: ## update submodules and version
+	@bash scripts/update-version.sh
