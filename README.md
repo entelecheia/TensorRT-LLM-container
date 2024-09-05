@@ -7,6 +7,7 @@
 Containerized solution for optimized LLM inference using TensorRT-LLM on NVIDIA GPUs.
 
 - GitHub: [https://github.com/entelecheia/TensorRT-LLM-container][repo-url]
+- TensorRT-LLM: [https://github.com/NVIDIA/TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)
 
 TensorRT-LLM-container provides a containerized environment for TensorRT-LLM, enabling efficient development and deployment of Large Language Models (LLMs) on NVIDIA GPUs. It encapsulates TensorRT-LLM's Python API for model definition, TensorRT engine building with advanced optimizations, and runtime components for both Python and C++.
 
