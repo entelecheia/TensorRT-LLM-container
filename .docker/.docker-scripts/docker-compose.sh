@@ -176,7 +176,7 @@ git submodule update --init --recursive
 
 # run docker-compose
 if [ "${COMMAND}" == "push" ]; then
-    CMD="docker push ${CONTAINER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
+    CMD="docker push ${IMAGE_NAME}:${IMAGE_TAG}"
 elif [ "${COMMAND}" == "login" ]; then
     echo "GITHUB_CR_PAT: $GITHUB_CR_PAT"
     CMD="docker login ghcr.io -u $GITHUB_USERNAME"
