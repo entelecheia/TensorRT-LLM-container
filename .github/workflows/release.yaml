@@ -27,7 +27,7 @@ jobs:
         shell: bash
       - name: Get version
         id: get-version
-        run: echo "version=v$(cat .docker/docker.version | grep -oP 'IMAGE_VERSION=\K.+') >> $GITHUB_OUTPUT
+        run: echo "version=v$(cat .docker/docker.version | grep -oP 'IMAGE_VERSION=\K.+')" >> $GITHUB_OUTPUT
         shell: bash
   create-tag:
     runs-on: ubuntu-latest
